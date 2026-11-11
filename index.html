@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f6f5ef">
+  <meta name="description" content="一张纸，一次飞翔。可交互的三维千纸鹤折叠动画。">
+  <title>一纸 · PAPER / FLIGHT</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./animation.js" defer></script>
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <a class="brand" href="./index.html" aria-label="一纸，回到开始">
+        <svg class="brand-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="m3 21 14-5L28 4l-5 16 14 8-18-3-9 11 4-14Z" fill="currentColor"/><path d="m17 16 2 9 4-5" stroke="#f6f5ef" stroke-width=".8"/></svg>
+        <span>一纸<span class="brand-english">PAPER / FLIGHT</span></span>
+      </a>
+      <div class="header-note"><span class="live-dot"></span> 一场关于折叠与自由的实验</div>
+      <button class="about-button" id="about-button" type="button">关于作品 <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 15 15 5M5 5h10v10" stroke="currentColor" stroke-width="1.3"/></svg></button>
+    </header>
+
+    <main class="main">
+      <section class="intro" aria-label="作品介绍与控制">
+        <div class="eyebrow"><span class="tiny-line"></span> THE ART OF BECOMING</div>
+        <h1>一纸成鹤，<br>乘风<span class="title-last">而起<span class="title-dot">。</span></span></h1>
+        <p class="description">把一张纸的平凡，折成飞翔的模样。<br>在折痕之间，遇见一点自由。</p>
+        <div class="primary-controls">
+          <button class="play-button" id="play-button" type="button" aria-label="播放动画"><svg id="play-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="m7 4 9 6-9 6Z" fill="currentColor"/></svg><span id="play-label">开始折叠</span></button>
+          <button class="replay-button" id="replay-button" type="button" aria-label="重新播放"><svg viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M5 8a7 7 0 1 1-.5 5M5 3v5h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+        <div class="paper-picker"><span class="control-label">纸的颜色</span><div class="swatches" role="group" aria-label="选择纸张颜色"><button class="swatch active" style="--swatch:#618e85" data-color="jade" aria-label="青玉色" aria-pressed="true"></button><button class="swatch" style="--swatch:#c78670" data-color="terra" aria-label="陶土色" aria-pressed="false"></button><button class="swatch" style="--swatch:#8296b0" data-color="blue" aria-label="雾蓝色" aria-pressed="false"></button><button class="swatch" style="--swatch:#d0b679" data-color="sand" aria-label="麦穗色" aria-pressed="false"></button><button class="swatch" style="--swatch:#b2a2b9" data-color="lilac" aria-label="丁香色" aria-pressed="false"></button></div></div>
+        <div class="intro-bottom"><span class="vertical-line"></span><p>始于方寸之间<br><span>终于无垠之上</span></p></div>
+      </section>
+
+      <section class="stage" aria-label="三维千纸鹤折叠动画">
+        <div class="stage-top"><span class="stage-caption">A SINGLE SHEET. ENDLESS POSSIBILITY.</span><span class="scene-count">SCENE <b id="scene-number">01</b> / 06</span></div>
+        <canvas id="scene" tabindex="0" aria-label="千纸鹤动画，拖动可旋转视角；左右方向键旋转视角"></canvas>
+        <div class="stage-cross cross-top" aria-hidden="true">+</div><div class="stage-cross cross-bottom" aria-hidden="true">+</div>
+        <div class="paper-note" id="paper-note"><span class="note-dot"></span><span id="paper-note-text">一切，从一张纸开始</span><span class="note-line"></span></div>
+        <div class="stage-bottom"><span class="rotate-hint"><svg viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M4 12c-3-5 12-9 15-3m-1-4 1 4-4 1M18 12c3 5-12 9-15 3m1 4-1-4 4-1" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>拖动，换个角度看世界</span><button class="reset-view" id="reset-view" type="button" title="恢复默认视角">重置视角 <span>↗</span></button></div>
+      </section>
+    </main>
+
+    <section class="timeline" aria-label="动画播放进度">
+      <div class="timeline-top"><div class="current-step"><span class="step-pill" id="step-pill">01</span><span id="step-title">一张纸的可能</span><span class="step-english" id="step-english">THE BEGINNING</span></div><div class="timeline-tools"><span class="time"><span id="current-time">00:00</span><span class="time-separator">/</span>00:28</span><span class="tools-divider"></span><button class="speed-button" id="speed-button" type="button" aria-label="切换播放速度">1× <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="m4 5 3 3 3-3" stroke="currentColor" stroke-width="1.2"/></svg></button><button class="sound-button" id="sound-button" type="button" aria-label="开启环境音" aria-pressed="false"><svg viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="m10 5-5 4H2v4h3l5 4V5Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path id="sound-waves" d="m15 9 5 5m0-5-5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></button></div></div>
+      <div class="seek-wrap"><div class="seek-track"><div class="seek-progress" id="seek-progress"></div><div class="seek-dots" aria-hidden="true"><i style="left:0%"></i><i style="left:16%"></i><i style="left:35%"></i><i style="left:51%"></i><i style="left:68%"></i><i style="left:84%"></i></div></div><input id="seek" type="range" min="0" max="28" step="0.01" value="0" aria-label="拖动查看折叠进度" aria-valuetext="0秒，共28秒"></div>
+      <div class="steps"><button class="step active" data-time="0" type="button"><span>01</span>一纸初始</button><button class="step" data-time="4.48" type="button"><span>02</span>折出轮廓</button><button class="step" data-time="9.8" type="button"><span>03</span>聚拢心意</button><button class="step" data-time="14.28" type="button"><span>04</span>引颈成形</button><button class="step" data-time="19.04" type="button"><span>05</span>舒展双翼</button><button class="step" data-time="23.52" type="button"><span>06</span>乘风而起 <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M4 4h8v8" stroke="currentColor" stroke-width="1.1"/></svg></button></div>
+    </section>
+
+    <footer class="footer"><span>折叠的是纸，放飞的是想象。</span><span class="footer-right">CRAFTED WITH CODE <span class="footer-star">✳</span> MADE TO WANDER</span></footer>
+  </div>
+
+  <dialog id="about-dialog"><form method="dialog"><button class="close-dialog" aria-label="关闭">×</button></form><span class="eyebrow">PAPER / FLIGHT · 001</span><h2>让想象，有了形状。</h2><p>一张方纸，几道折痕，一只向往天空的鹤。</p><p>这是一个用原生 Canvas 和 JavaScript 创作的三维动画。以艺术化的连续折叠呈现纸张成鹤、展翼、飞离的过程。你可以拖动旋转、暂停观看、拖动时间线，也可以为它挑一种喜欢的颜色。</p><p class="dialog-footnote">动画为艺术演绎，非逐步折纸教学。<br>键盘：空格播放 / 暂停，R 重播；画布内方向键旋转。</p></dialog>
+</body>
+</html>
